@@ -145,8 +145,6 @@ Screenshots demonstrating the working application are located in the `screenshot
 
 ## Project Status
 
-**Completed** — Oasis Infobyte Python Programming Internship (Task 1).
-
-```
+**Completed** - Oasis Infobyte Python Programming Internship (Task 1).
 
 ```
