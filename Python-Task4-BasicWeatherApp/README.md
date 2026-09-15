@@ -1,5 +1,4 @@
-Markdown
-
+````markdown
 # Basic Weather App
 
 ## Overview
@@ -42,52 +41,77 @@ Python-Task4-BasicWeatherApp/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
-Note: The .env file and .venv/ directory are intentionally excluded from version control to protect API credentials and environment isolation.
+```
+````
 
-Requirements
-Python 3.13 or compatible Python 3 environment
+> **Note:** The `.env` file and `.venv/` directory are intentionally excluded from version control to protect API credentials and environment isolation.
 
-OpenWeatherMap API key (Free Tier)
+## Requirements
 
-Active Internet connection
+- Python 3.13 or compatible Python 3 environment
+- OpenWeatherMap API key (Free Tier)
+- Active Internet connection
 
-Installation
-Create a virtual environment:
+## Installation
 
-PowerShell
+1. **Create a virtual environment:**
+
+```powershell
 py -3.13 -m venv .venv
-Activate the environment:
 
-PowerShell
+```
+
+2. **Activate the environment:**
+
+```powershell
 .\.venv\Scripts\Activate.ps1
-Install dependencies:
 
-PowerShell
+```
+
+3. **Install dependencies:**
+
+```powershell
 pip install -r requirements.txt
-API Key Configuration
+
+```
+
+## API Key Configuration
+
 The application loads credentials from an environment configuration file:
 
-Create a file named .env in the root folder (Python-Task4-BasicWeatherApp/).
+1. Create a file named `.env` in the root folder (`Python-Task4-BasicWeatherApp/`).
+2. Add your OpenWeatherMap API key:
 
-Add your OpenWeatherMap API key:
-
-Code snippet
+```env
 OPENWEATHER_API_KEY=your_api_key_here
-(Replace your_api_key_here with your valid key. Never commit .env to version control).
 
-Running the Application
+```
+
+_(Replace `your_api_key_here` with your valid key. Never commit `.env` to version control)._
+
+## Running the Application
+
 Execute the main application script:
 
-PowerShell
+```powershell
 python .\src\weather_app.py
-Example Usage
-City Search
-Plaintext
+
+```
+
+## Example Usage
+
+### City Search
+
+```text
 Enter city name or ZIP code: Karachi
-Ambiguous City Disambiguation
+
+```
+
+### Ambiguous City Disambiguation
+
 When multiple locations match a query:
 
-Plaintext
+```text
 Enter city name or ZIP code: Hyderabad
 
 Multiple locations found for 'Hyderabad':
@@ -97,8 +121,12 @@ Multiple locations found for 'Hyderabad':
  ...
 ---------------------------------------------
 Select location: 2
-Sample Terminal Output
-Plaintext
+
+```
+
+### Sample Terminal Output
+
+```text
 =============================================
               WEATHER REPORT
 =============================================
@@ -109,43 +137,40 @@ Temperature    : 100.6 °F
 Humidity       : 37%
 Wind Speed     : 3.6 m/s
 =============================================
-Technical Architecture & Functions
-get_location(): Collects and validates user prompt input.
 
-resolve_location(): Connects to OpenWeather Geocoding services. Handles postal code resolving, direct geocoding fallbacks, duplicate filtering, and disambiguation prompts.
+```
 
-fetch_weather_by_coords(): Queries OpenWeatherMap using resolved coordinates.
+## Technical Architecture & Functions
 
-parse_weather(): Parses JSON payloads and computes Fahrenheit values from Celsius metrics.
+- **`get_location()`**: Collects and validates user prompt input.
+- **`resolve_location()`**: Connects to OpenWeather Geocoding services. Handles postal code resolving, direct geocoding fallbacks, duplicate filtering, and disambiguation prompts.
+- **`fetch_weather_by_coords()`**: Queries OpenWeatherMap using resolved coordinates.
+- **`parse_weather()`**: Parses JSON payloads and computes Fahrenheit values from Celsius metrics.
+- **`display_weather()`**: Formats output into a standardized terminal report card.
+- **`main()`**: Controls runtime execution, loop cycles, and error handling.
 
-display_weather(): Formats output into a standardized terminal report card.
+## Error & Edge Case Handling
 
-main(): Controls runtime execution, loop cycles, and error handling.
+- **Empty Input:** Rejects empty submissions with actionable user guidance.
+- **Unknown Locations:** Traps API 404 responses gracefully without throwing unhandled exceptions.
+- **Network Interruptions:** Catches `requests.exceptions.RequestException` timeouts cleanly.
+- **Unauthorized API Key:** Detects invalid API keys (HTTP 401) and alerts the user to verify `.env`.
+- **Selection Validation:** Validates numerical selections during city disambiguation menus.
 
-Error & Edge Case Handling
-Empty Input: Rejects empty submissions with actionable user guidance.
+## Learning Outcomes
 
-Unknown Locations: Traps API 404 responses gracefully without throwing unhandled exceptions.
-
-Network Interruptions: Catches requests.exceptions.RequestException timeouts cleanly.
-
-Unauthorized API Key: Detects invalid API keys (HTTP 401) and alerts the user to verify .env.
-
-Selection Validation: Validates numerical selections during city disambiguation menus.
-
-Learning Outcomes
 This project provided practical experience with:
 
-REST API integration & JSON payload parsing.
+- REST API integration & JSON payload parsing.
+- Geocoding and coordinate-based data fetching.
+- Environment variable security (`.env` isolation).
+- Exception handling and terminal UI formatting.
+- Git configuration and secret management.
 
-Geocoding and coordinate-based data fetching.
+## Project Status
 
-Environment variable security (.env isolation).
+**Completed** — Oasis Infobyte Python Programming Internship (Task 4 - Beginner Tier).
 
-Exception handling and terminal UI formatting.
+```
 
-Git configuration and secret management.
-
-Project Status
-Completed — Oasis Infobyte Python Programming Internship (Task 4 - Beginner Tier).
 ```
